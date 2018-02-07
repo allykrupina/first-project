@@ -5,6 +5,10 @@ body {
     line-height: 1;
     box-sizing: border-box;
 }
+
+$break-small: 667px;
+$break-large: 1200px;
+
 @font-face {
     font-family: "MuseoSansRegular";
     src: url("../fonts/MuseoSansRegular/MuseoSansRegular.eot");
@@ -65,17 +69,36 @@ header {
 
     .menu {
         transition: 0.3s;
-        &.open{
+        @media screen and (max-width: $break-small) {
+            position: absolute;
+            top: 77px;
+            left: 0;
+            z-index: 2;
+            background: #f7fdfe;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        &.open {
             height: 100%;
         }
+
         a {
             color: #82868f;
             font-size: 14px;
             margin-left: 28px;
             transition: 0.3s;
-            &:hover{
+            @media screen and (max-width: $break-small) {
+                display: block;
+                padding: 33px 30px 0;
+                margin: 0;
+            }
+
+            &:hover {
                 color: #000;
             }
+
             &:last-child {
                 background: #0ebfdd;
                 color: #fff;
@@ -83,80 +106,128 @@ header {
                 padding: 15px 35px;
                 border-radius: 40px;
                 transition: 0.3s;
-                &:hover{
+                @media screen and (max-width: $break-small) {
+                    border: none;
+                    border-radius: 0;
+                    background: none;
+                    color: inherit;
+                    padding: 33px 30px 0;
+                }
+
+                &:hover {
                     background: none;
                     color: #0ebfdd;
                 }
             }
         }
-        &-button-icon{
+
+        &-button-icon {
             display: none;
+            @media screen and (max-width: $break-small) {
+                display: block;
+            }
         }
-        &-button{
+
+        &-button {
             position: relative;
             width: 25px;
             height: 10px;
             z-index: 2;
             display: block;
-            &:before,
-            &:after{
+
+            &:after,
+            &:before {
                 content: '';
                 position: absolute;
                 left: 0;
                 background: #82868f;
                 height: 3px;
             }
-            &:before{
+
+            &:before {
                 width: 80%;
                 bottom: 0;
-                animation:inBtm 0.5s backwards;
-                animation-direction:reverse;
+                animation: inBtm 0.5s backwards;
+                animation-direction: reverse;
                 transition: 0.5s;
             }
-            &:after{
+
+            &:after {
                 width: 100%;
                 top: 0;
-                animation:inT 0.5s backwards;
-                animation-direction:reverse;
+                animation: inT 0.5s backwards;
+                animation-direction: reverse;
             }
-            &-icon{
+
+            &-icon {
                 padding: 10px;
                 cursor: pointer;
             }
-            &.open{
-                &:before{
+
+            &.open {
+                &:before {
                     width: 100%;
-                    animation:outBtm 0.5s forwards;
+                    animation: outBtm 0.5s forwards;
                 }
-                &:after{
-                    animation:outT 0.5s forwards;
+
+                &:after {
+                    animation: outT 0.5s forwards;
                 }
             }
         }
     }
 }
-@keyframes inT{
-    0%{transform: translateY(0px) rotate(0deg);}
-    50%{transform: translateY(4px) rotate(0deg);}
-    100%{transform: translateY(4px) rotate(135deg);}
-}
+@keyframes inT {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
 
-@keyframes outT{
-    0%{transform: translateY(0px) rotate(0deg);}
-    50%{transform: translateY(4px) rotate(0deg);}
-    100%{transform: translateY(4px) rotate(135deg);}
-}
+    50% {
+        transform: translateY(4px) rotate(0deg);
+    }
 
-@keyframes inBtm{
-    0%{transform: translateY(0px) rotate(0deg);}
-    50%{transform: translateY(-3px) rotate(0deg);}
-    100%{transform: translateY(-3px) rotate(45deg);}
+    100% {
+        transform: translateY(4px) rotate(135deg);
+    }
 }
+@keyframes outT {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
 
-@keyframes outBtm{
-    0%{transform: translateY(0px) rotate(0deg);}
-    50%{transform: translateY(-3px) rotate(0deg);}
-    100%{transform: translateY(-3px) rotate(45deg);}
+    50% {
+        transform: translateY(4px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(4px) rotate(135deg);
+    }
+}
+@keyframes inBtm {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-3px) rotate(45deg);
+    }
+}
+@keyframes outBtm {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-3px) rotate(45deg);
+    }
 }
 
 .intro {
@@ -168,6 +239,9 @@ header {
     color: #f7fdfe;
     position: relative;
     padding-top: 41.7%;
+    @media screen and (max-width: $break-small) {
+        padding-top: 87%;
+    }
 
     &:before {
         content: "";
@@ -196,6 +270,12 @@ header {
         margin-bottom: 30px;
         position: relative;
         display: inline-block;
+        @media screen and (max-width: $break-small) {
+            font-size: 1.9em;
+        }
+        @media screen and (max-width: $break-large) {
+            font-size: 2em;
+        }
 
         &:after,
         &:before {
@@ -222,6 +302,12 @@ header {
         font-family: "AvenirMedium";
         line-height: 28px;
         padding-bottom: 6%;
+        @media screen and (max-width: $break-small) {
+            font-size: 1em;
+        }
+        @media screen and (max-width: $break-large) {
+            font-size: 1em;
+        }
     }
 }
 
@@ -237,6 +323,14 @@ header {
         font-family: "AvenirHeavy";
         color: #0ebfdd;
         margin-bottom: 34px;
+        @media screen and (max-width: $break-small) {
+            font-size: 1.9em;
+            margin-bottom: 6%;
+            padding-top: 3%;
+        }
+        @media screen and (max-width: $break-large) {
+            font-size: 1.9em;
+        }
     }
 
     p {
@@ -244,6 +338,13 @@ header {
         font-size: 19px;
         line-height: 28px;
         color: #45494d;
+        @media screen and (max-width: $break-small) {
+            font-size: 1em;
+            line-height: 25px;
+        }
+        @media screen and (max-width: $break-large) {
+            font-size: 1em;
+        }
     }
 }
 
@@ -257,6 +358,12 @@ header {
         font-size: 44px;
         font-family: "AvenirHeavy";
         padding-bottom: 7%;
+        @media screen and (max-width: $break-small) {
+            font-size: 1.9em;
+        }
+        @media screen and (max-width: $break-large) {
+            font-size: 2em;
+        }
     }
 
     &-items {
@@ -269,6 +376,15 @@ header {
         width: calc(100% / 3 - 70px);
         vertical-align: top;
         max-width: 250px;
+        @media screen and (max-width: $break-small) {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+        @media screen and (max-width: $break-large) {
+            width: calc(80% / 3 - 70px);
+        }
+
         &-img {
             border-radius: 50%;
             width: 100%;
@@ -298,12 +414,18 @@ header {
             font-size: 18px;
             color: #fff;
             margin: 10px 0;
+            @media screen and (max-width: $break-small) {
+                font-size: 20px;
+            }
         }
 
         .job {
             font-family: "AvenirOblique";
             font-size: 16px;
             color: #fff;
+            @media screen and (max-width: $break-small) {
+                margin-bottom: 8%;
+            }
         }
     }
 
@@ -317,23 +439,41 @@ header {
         border: 1px solid #fff;
         border-radius: 40px;
         padding: 13px 37px;
-        &:hover{
+        @media screen and (max-width: $break-small) {
+            margin: 5% 0;
+            font-size: 10px;
+        }
+        @media screen and (max-width: $break-large) {
+            font-size: 0.6em;
+        }
+
+        &:hover {
             background: #f7fdfe;
             color: #0ebfdd;
         }
     }
 }
 
-.map{
+.map {
     padding-top: 41.7%;
     overflow: hidden;
     position: relative;
+    @media screen and (max-width: $break-small) {
+        padding-top: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
     #map {
         width: 100%;
         top: 0;
         left: 0;
         position: absolute!important;
         height: 105%;
+        @media screen and (max-width: $break-small) {
+            height: 110%;
+        }
+
         &-content {
             height: 40px;
             color: #000;
@@ -350,6 +490,10 @@ footer {
         width: 90%;
         margin: 0 auto;
         align-items: center;
+        @media screen and (max-width: $break-small) {
+            position: relative;
+            align-items: center;
+        }
     }
 
     .footer-items {
@@ -359,239 +503,117 @@ footer {
         align-items: center;
         border-bottom: 1px solid #5a5e62;
         padding: 36px 0;
-    }
-
-    .footer-menu a {
-        color: #d7dee4;
-        font-size: 14px;
-        text-transform: uppercase;
-        transition: 0.3s;
-        &:hover{
-            color: #fff;
-        }
-        &:nth-child(2) {
-            margin: 0 35px;
+        @media screen and (max-width: $break-small) {
+            display: block;
+            text-align: center;
         }
     }
 
-    .footer-icons a {
-        font-size: 14px;
-        color: #d7dee4;
-        border: 1px solid #d7dee4;
-        border-radius: 50%;
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        position: relative;
-        &:hover{
-            color: #fff;
-            border: 1px solid #fff;
-        }
-        &:nth-child(2) {
-            margin: 0 10px;
+    .footer-menu {
+        @media screen and (max-width: $break-small) {
+            margin-bottom: 15px;
         }
 
-        i {
-            position: relative;
+        .footer-menu a {
+            color: #d7dee4;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            @media screen and (max-width: $break-small) {
+                width: 100%;
+                display: block;
+            }
+
+            &:hover {
+                color: #fff;
+            }
+
+            &:nth-child(2) {
+                margin: 0 35px;
+                @media screen and (max-width: $break-small) {
+                    margin: 25px 0;
+                }
+            }
+        }
+    }
+
+    footer-icons {
+        @media screen and (max-width: $break-small) {
+            position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .footer-icons a {
+            font-size: 14px;
+            color: #d7dee4;
+            border: 1px solid #d7dee4;
+            border-radius: 50%;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            @media screen and (max-width: $break-small) {
+                margin-top: 10px;
+                width: 36px;
+                height: 36px;
+            }
+
+            &:hover {
+                color: #fff;
+                border: 1px solid #fff;
+            }
+
+            &:nth-child(2) {
+                margin: 0 10px;
+            }
+
+            i {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
     }
 
     .footer-info {
-        text-align: right;
-        font-size: 0;
+        text-align: center;
+        padding-bottom: 10px;
+        @media screen and (max-width: $break-small) {
+            height: 110%;
+        }
 
-        p, a {
+        a,
+        p {
             display: inline-block;
             padding: 0 10px;
             margin: 15px 0;
             font-size: 12px;
             color: #73767a;
             transition: 0.3s;
+            @media screen and (max-width: $break-small) {
+                display: block;
+                padding: 0;
+                color: #d7dee4;
+            }
+
             &:nth-child(2) {
                 border: none;
                 border-right: 1px solid #73767a;
                 border-left: 1px solid #73767a;
+                @media screen and (max-width: $break-small) {
+                    border: none;
+                }
             }
 
             &:last-child {
                 padding-right: 0;
             }
         }
-        a:hover{
+
+        a:hover {
             color: #fff;
-        }
-    }
-}
-@media screen and (max-width: 1200px) {
-    .intro-in{
-        h1{
-            font-size: 1.9em;
-        }
-        p{
-            font-size: 1em;
-        }
-    }
-    .about{
-        h2{
-            font-size: 1.9em;
-        }
-        p{
-            font-size: 1em;
-        }
-    }
-    .team{
-        h2{
-            font-size: 1.9em;
-        }
-        &-item{
-            width: calc(80% / 3 - 70px);
-        }
-        &-button{
-            font-size: 0.6em;
-        }
-    }
-}
-@media screen and (max-width: 667px) {
-    .header-in{
-        .menu{
-            position: absolute;
-            top: 77px;
-            left: 0;
-            z-index: 2;
-            background: #f7fdfe;
-            width: 100%;
-            height: 0;
-            overflow: hidden;
-            a{
-                display: block;
-                padding: 33px 30px 0;
-                margin: 0;
-                &:last-child{
-                    border: none;
-                    border-radius: 0;
-                    background: none;
-                    color: inherit;
-                    padding: 33px 30px 0;
-                }
-            }
-            &-button-icon{
-                display: block;
-            }
-        }
-    }
-    .intro {
-        padding-top: 87%;
-
-        .intro-in {
-            h1 {
-                font-size: 2em;
-            }
-
-            p {
-                font-size: 1em;
-            }
-        }
-    }
-    .about {
-        h2 {
-            font-size: 2em;
-            margin-bottom: 6%;
-            padding-top: 3%;
-        }
-
-        p {
-            font-size: 1em;
-            line-height: 25px;
-        }
-    }
-
-    .team {
-        h2 {
-            font-size: 2em;
-        }
-
-        .button {
-            margin: 5% 0;
-            font-size: 10px;
-        }
-        &-item {
-            width: 50%;
-            display: block;
-            margin: 0 auto;
-            .name {
-                font-size: 20px;
-            }
-
-            .job {
-                margin-bottom: 8%;
-            }
-        }
-    }
-    .map{
-        padding-top: 100%;
-        overflow: hidden;
-        position: relative;
-        #map {
-            width: 100%;
-            top: 0;
-            left: 0;
-            position: absolute!important;
-            height: 110%;
-            &-content {
-                height: 40px;
-                color: #000;
-            }
-        }
-    }
-    footer {
-        .footer-in {
-            position: relative;
-            align-items: center;
-
-            .footer-items {
-                display: block;
-                text-align: center;
-
-                .footer-menu {
-                    margin-bottom: 15px;
-
-                    a {
-                        width: 100%;
-                        display: block;
-
-                        &:nth-child(2) {
-                            margin: 25px 0;
-                        }
-                    }
-
-                    .footer-icons {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%);
-
-                        a {
-                            margin-top: 10px;
-                            width: 36px;
-                            height: 36px;
-                        }
-                    }
-                }
-            }
-        }
-        .footer-info{
-            text-align: center;
-            padding-bottom: 10px;
-            a, p{
-                display: block;
-                padding: 0;
-                color: #d7dee4;
-                &:nth-child(2){
-                    border: none;
-                }
-            }
         }
     }
 }
